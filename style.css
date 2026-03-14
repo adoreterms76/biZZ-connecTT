@@ -427,3 +427,263 @@ section {
         border-radius: 10px;
     }
 }
+
+-- signup --
+/* Add these styles to your existing style.css file */
+
+/* Auth Pages (Login & Signup) */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 20px;
+}
+
+.auth-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 550px;
+    padding: 40px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #666;
+}
+
+/* Account Type Toggle (for signup) */
+.account-type {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.type-btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.type-btn.active {
+    border-color: #4CAF50;
+    background: #4CAF50;
+    color: white;
+}
+
+.type-btn i {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Forms */
+.signup-form {
+    display: none;
+}
+
+.signup-form.active {
+    display: block;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* File Upload */
+.file-upload {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-upload:hover {
+    border-color: #4CAF50;
+    background: #f9f9f9;
+}
+
+.file-upload input {
+    display: none;
+}
+
+.file-upload span {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.file-upload p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.file-upload small {
+    color: #999;
+    font-size: 12px;
+}
+
+/* Password Strength */
+.password-strength {
+    margin-top: 5px;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s, background 0.3s;
+}
+
+.strength-text {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Terms Checkbox */
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.terms input {
+    width: auto;
+}
+
+.terms a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Demo Credentials (for login page) */
+.demo-credentials {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.demo-credentials p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.demo-btn {
+    background: #eee;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.demo-btn:hover {
+    background: #ddd;
+}
+
+/* Responsive Design for Auth Pages */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 30px 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .account-type {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .type-btn {
+        max-width: 100%;
+        width: 100%;
+    }
+}
