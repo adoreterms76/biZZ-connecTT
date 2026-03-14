@@ -1,0 +1,90 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BIZZ CONNECT Botswana</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Welcome Back to BIZZ CONNECT</h2>
+                <p>Log in to your account</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+            </div>
+            
+            <!-- Demo Credentials -->
+            <div class="demo-credentials">
+                <p><strong>Demo Credentials (School Project):</strong></p>
+                <button class="demo-btn" onclick="fillDemo('customer')">Login as Customer</button>
+                <button class="demo-btn" onclick="fillDemo('provider')">Login as Provider</button>
+                <p style="margin-top: 10px; font-size: 12px;">For demo purposes only</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulate login (in real app, this would validate with backend)
+            if (email && password) {
+                // Check user type based on email (demo logic)
+                let userType = 'customer';
+                if (email.includes('provider') || email.includes('business')) {
+                    userType = 'provider';
+                }
+                
+                // Store login state
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userType', userType);
+                localStorage.setItem('userEmail', email);
+                
+                // Show success message
+                alert('Login successful! Redirecting to your dashboard...');
+                
+                // Redirect to appropriate dashboard
+                if (userType === 'customer') {
+                    window.location.href = 'customer-dashboard.html';
+                } else {
+                    window.location.href = 'provider-dashboard.html';
+                }
+            }
+        });
+        
+        function fillDemo(type) {
+            if (type === 'customer') {
+                document.getElementById('email').value = 'john.customer@example.com';
+                document.getElementById('password').value = 'password123';
+            } else {
+                document.getElementById('email').value = 'thabo.provider@business.com';
+                document.getElementById('password').value = 'password123';
+            }
+        }
+    </script>
+</body>
+</html>
