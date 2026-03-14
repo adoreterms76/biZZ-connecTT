@@ -1,0 +1,317 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BIZZ CONNECT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Create an Account</h2>
+                <p>Join BIZZ CONNECT today</p>
+            </div>
+            
+            <!-- Account Type Selection -->
+            <div class="account-type">
+                <button class="type-btn active" onclick="switchType('customer')" id="customerBtn">
+                    <span>👤</span>
+                    Sign up as Customer
+                </button>
+                <button class="type-btn" onclick="switchType('provider')" id="providerBtn">
+                    <span>💼</span>
+                    Sign up as Provider
+                </button>
+            </div>
+            
+            <!-- Customer Sign Up Form -->
+            <form id="customerForm" class="signup-form active" onsubmit="handleCustomerSignup(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="customerName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="customerPhone" required placeholder="+267 71 234 567">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="customerEmail" required placeholder="you@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Location *</label>
+                    <select id="customerLocation" required>
+                        <option value="">Select your city/town</option>
+                        <option value="gaborone">Gaborone</option>
+                        <option value="francistown">Francistown</option>
+                        <option value="lobatse">Lobatse</option>
+                        <option value="selebi-phikwe">Selebi-Phikwe</option>
+                        <option value="jwaneng">Jwaneng</option>
+                        <option value="orapa">Orapa</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="customerPassword" required placeholder="Create a password" onkeyup="checkPasswordStrength(this.value)">
+                    <div class="password-strength">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="strength-text" id="strengthText"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Confirm Password *</label>
+                    <input type="password" id="customerConfirmPassword" required placeholder="Confirm your password">
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="customerTerms" required>
+                    <label>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Customer Account</button>
+            </form>
+            
+            <!-- Provider Sign Up Form -->
+            <form id="providerForm" class="signup-form" onsubmit="handleProviderSignup(event)">
+                <!-- Basic Info -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="providerName" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Business Name *</label>
+                        <input type="text" id="businessName" required placeholder="Your business name">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="providerEmail" required placeholder="business@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="providerPhone" required placeholder="+267 71 234 567">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Location *</label>
+                        <select id="providerLocation" required>
+                            <option value="">Select your city/town</option>
+                            <option value="gaborone">Gaborone</option>
+                            <option value="francistown">Francistown</option>
+                            <option value="lobatse">Lobatse</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Category *</label>
+                        <select id="serviceCategory" required>
+                            <option value="">Select category</option>
+                            <option value="hair">Hair & Beauty</option>
+                            <option value="home">Home Repairs</option>
+                            <option value="cleaning">Cleaning Services</option>
+                            <option value="tutoring">Tutoring</option>
+                            <option value="events">Events</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Service Description *</label>
+                    <textarea id="serviceDescription" required placeholder="Describe the services you offer..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pricing Information *</label>
+                        <input type="text" id="pricing" required placeholder="e.g., From P150, Hourly rates">
+                    </div>
+                    <div class="form-group">
+                        <label>Years of Experience</label>
+                        <input type="number" id="experience" placeholder="e.g., 5">
+                    </div>
+                </div>
+                
+                <!-- Profile Photo Upload -->
+                <div class="form-group">
+                    <label>Profile Photo *</label>
+                    <div class="file-upload" onclick="document.getElementById('profilePhoto').click()">
+                        <input type="file" id="profilePhoto" accept="image/*" required onchange="previewImage(this, 'profilePreview')">
+                        <span>📸</span>
+                        <p>Click to upload profile photo</p>
+                        <small id="profilePreview"></small>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Images -->
+                <div class="form-group">
+                    <label>Portfolio Images (Optional)</label>
+                    <div class="file-upload" onclick="document.getElementById('portfolioImages').click()">
+                        <input type="file" id="portfolioImages" accept="image/*" multiple onchange="updateFileCount(this, 'portfolioCount')">
+                        <span>🖼️</span>
+                        <p>Click to upload portfolio images</p>
+                        <small id="portfolioCount">No files chosen</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="providerPassword" required placeholder="Create a password">
+                </div>
+                
+                <div class="form-group">
+                    <label>Confirm Password *</label>
+                    <input type="password" id="providerConfirmPassword" required placeholder="Confirm your password">
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="providerTerms" required>
+                    <label>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Provider Account</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Log in here</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Switch between Customer and Provider forms
+        function switchType(type) {
+            const customerBtn = document.getElementById('customerBtn');
+            const providerBtn = document.getElementById('providerBtn');
+            const customerForm = document.getElementById('customerForm');
+            const providerForm = document.getElementById('providerForm');
+            
+            if (type === 'customer') {
+                customerBtn.classList.add('active');
+                providerBtn.classList.remove('active');
+                customerForm.classList.add('active');
+                providerForm.classList.remove('active');
+            } else {
+                providerBtn.classList.add('active');
+                customerBtn.classList.remove('active');
+                providerForm.classList.add('active');
+                customerForm.classList.remove('active');
+            }
+        }
+        
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            let strength = 0;
+            
+            if (password.length >= 8) strength += 25;
+            if (password.match(/[a-z]+/)) strength += 25;
+            if (password.match(/[A-Z]+/)) strength += 25;
+            if (password.match(/[0-9]+/)) strength += 25;
+            
+            strengthBar.style.width = strength + '%';
+            
+            if (strength <= 25) {
+                strengthBar.style.background = '#f44336';
+                strengthText.textContent = 'Weak password';
+                strengthText.style.color = '#f44336';
+            } else if (strength <= 50) {
+                strengthBar.style.background = '#ff9800';
+                strengthText.textContent = 'Fair password';
+                strengthText.style.color = '#ff9800';
+            } else if (strength <= 75) {
+                strengthBar.style.background = '#2196F3';
+                strengthText.textContent = 'Good password';
+                strengthText.style.color = '#2196F3';
+            } else {
+                strengthBar.style.background = '#4CAF50';
+                strengthText.textContent = 'Strong password';
+                strengthText.style.color = '#4CAF50';
+            }
+        }
+        
+        // File upload helpers
+        function previewImage(input, previewId) {
+            const preview = document.getElementById(previewId);
+            if (input.files && input.files[0]) {
+                preview.textContent = 'Selected: ' + input.files[0].name;
+            }
+        }
+        
+        function updateFileCount(input, countId) {
+            const count = document.getElementById(countId);
+            if (input.files.length > 0) {
+                count.textContent = input.files.length + ' file(s) selected';
+            } else {
+                count.textContent = 'No files chosen';
+            }
+        }
+        
+        // Handle Customer Signup
+        function handleCustomerSignup(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('customerName').value;
+            const email = document.getElementById('customerEmail').value;
+            const phone = document.getElementById('customerPhone').value;
+            const location = document.getElementById('customerLocation').value;
+            const password = document.getElementById('customerPassword').value;
+            const confirmPassword = document.getElementById('customerConfirmPassword').value;
+            
+            // Basic validation
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Store user data (simulated)
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userType', 'customer');
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            alert('Customer account created successfully!');
+            window.location.href = 'customer-dashboard.html';
+        }
+        
+        // Handle Provider Signup
+        function handleProviderSignup(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('providerName').value;
+            const businessName = document.getElementById('businessName').value;
+            const email = document.getElementById('providerEmail').value;
+            
+            // Store provider data
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userType', 'provider');
+            localStorage.setItem('userName', name);
+            localStorage.setItem('businessName', businessName);
+            localStorage.setItem('userEmail', email);
+            
+            alert('Provider account created successfully! We will review your information.');
+            window.location.href = 'provider-dashboard.html';
+        }
+    </script>
+</body>
+</html>
