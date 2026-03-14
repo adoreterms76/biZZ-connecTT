@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIZZ CONNECT - Find Local Services</title>
+    <title>BIZZ CONNECT - Find Local Services in Botswana</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>Local<span>Serve</span></h1>
+                <h1>BIZZ<span>CONNECT</span></h1>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -38,8 +38,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Find Trusted Local Services in Botswana</h1>
-                <p>Connect with verified professionals for all your needs - from hair styling to home repairs</p>
+                <h1>Connect with Trusted Local Service Providers in Botswana</h1>
+                <p>BIZZ CONNECT brings together professionals and customers - from hair styling to home repairs</p>
                 
                 <!-- Search Bar -->
                 <div class="search-box">
@@ -65,7 +65,7 @@
     <!-- How It Works Section -->
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">How It Works</h2>
+            <h2 class="section-title">How BIZZ CONNECT Works</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-icon">1</div>
@@ -128,7 +128,7 @@
     <!-- Featured Providers -->
     <section class="featured">
         <div class="container">
-            <h2 class="section-title">Featured Service Providers</h2>
+            <h2 class="section-title">Featured Service Providers on BIZZ CONNECT</h2>
             <div class="provider-grid">
                 <div class="provider-card">
                     <div class="provider-image">
@@ -189,8 +189,8 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Are You a Service Provider?</h2>
-                <p>Join LocalServe and grow your business. Connect with thousands of customers in Botswana.</p>
-                <a href="signup-provider.html" class="btn btn-primary btn-large">Become a Provider</a>
+                <p>Join BIZZ CONNECT and grow your business. Connect with thousands of customers in Botswana.</p>
+                <a href="signup.html" class="btn btn-primary btn-large" onclick="selectProviderType()">Become a Provider</a>
             </div>
         </div>
     </section>
@@ -200,7 +200,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>LocalServe</h4>
+                    <h4>BIZZ CONNECT</h4>
                     <p>Connecting Botswana with trusted local service providers.</p>
                 </div>
                 <div class="footer-col">
@@ -222,16 +222,22 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-                    <p>Email: info@localserve.co.bw</p>
+                    <p>Email: info@bizzconnect.co.bw</p>
                     <p>Phone: +267 123 4567</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 LocalServe Botswana. All rights reserved.</p>
+                <p>&copy; 2024 BIZZ CONNECT Botswana. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function selectProviderType() {
+            // Store in session that user wants to sign up as provider
+            localStorage.setItem('preferredSignupType', 'provider');
+        }
+    </script>
 </body>
 </html>
