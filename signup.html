@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - BIZZ CONNECT</title>
+    <title>Sign Up - BIZZ CONNECT Botswana</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,8 +12,8 @@
     <div class="auth-page">
         <div class="auth-container">
             <div class="auth-header">
-                <h2>Create an Account</h2>
-                <p>Join BIZZ CONNECT today</p>
+                <h2>Join BIZZ CONNECT</h2>
+                <p>Create your account today</p>
             </div>
             
             <!-- Account Type Selection -->
@@ -196,6 +196,15 @@
     </div>
     
     <script>
+        // Check if user came from "Become a Provider" button
+        window.onload = function() {
+            const preferredType = localStorage.getItem('preferredSignupType');
+            if (preferredType === 'provider') {
+                switchType('provider');
+                localStorage.removeItem('preferredSignupType');
+            }
+        }
+        
         // Switch between Customer and Provider forms
         function switchType(type) {
             const customerBtn = document.getElementById('customerBtn');
@@ -272,12 +281,11 @@
             // Get form values
             const name = document.getElementById('customerName').value;
             const email = document.getElementById('customerEmail').value;
-            const phone = document.getElementById('customerPhone').value;
-            const location = document.getElementById('customerLocation').value;
+            
+            // Basic validation
             const password = document.getElementById('customerPassword').value;
             const confirmPassword = document.getElementById('customerConfirmPassword').value;
             
-            // Basic validation
             if (password !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
@@ -289,7 +297,7 @@
             localStorage.setItem('userName', name);
             localStorage.setItem('userEmail', email);
             
-            alert('Customer account created successfully!');
+            alert('Welcome to BIZZ CONNECT! Your customer account has been created.');
             window.location.href = 'customer-dashboard.html';
         }
         
@@ -309,9 +317,10 @@
             localStorage.setItem('businessName', businessName);
             localStorage.setItem('userEmail', email);
             
-            alert('Provider account created successfully! We will review your information.');
+            alert('Thank you for joining BIZZ CONNECT! Your provider account is pending review.');
             window.location.href = 'provider-dashboard.html';
         }
     </script>
 </body>
 </html>
+               
