@@ -34,15 +34,21 @@ body {
     height: 80px;
 }
 
+/* Update the logo color if you want a different theme */
 .logo h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
 .logo span {
-    color: #4CAF50;
+    color: #4CAF50; /* You can change this color later if you want */
 }
 
+/* If you want a different primary color for BIZZ CONNECT, just change this one value */
+:root {
+    --primary-color: #4CAF50; /* Change this to any color you like */
+    --primary-dark: #45a049;
+}
 .nav-links {
     display: flex;
     list-style: none;
